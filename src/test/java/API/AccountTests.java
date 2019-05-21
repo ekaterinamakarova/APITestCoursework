@@ -163,17 +163,39 @@ public class AccountTests {
                 .body("code", equalTo(200));
     }
 
-    public void ban(AccountBanDTO dto, String token) {
+    public void updateEmailEmptyValue(String token) {
+        AccountEmailDTO dto =  new AccountEmailDTO(null);
         given()
                 .spec(Configuration.getRequestSpec(token))
-                .contentType(ContentType.JSON)
                 .body(dto)
                 .when()
                 .post(Configuration.getDomain() + "/api/account/email")
                 .then()
-                .statusCode(200)
-                .body("code", equalTo(200));
+                .statusCode(400);
     }
+
+    public void updateEmailInvalidValue_1(String token) {
+        AccountEmailDTO dto =  new AccountEmailDTO("accioskymail.ru");
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .body(dto)
+                .when()
+                .post(Configuration.getDomain() + "/api/account/email")
+                .then()
+                .statusCode(400);
+    }
+
+    public void updateEmailInvalidValue_2(String token) {
+        AccountEmailDTO dto =  new AccountEmailDTO("acciosky@@mail.ru");
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .body(dto)
+                .when()
+                .post(Configuration.getDomain() + "/api/account/email")
+                .then()
+                .statusCode(400);
+    }
+
 
     public void getAccountInfo(String token) {
         given()
@@ -185,6 +207,27 @@ public class AccountTests {
                 .body("code", equalTo(200));
     }
 
+    public void getAccountInfoWrongToken() {
+        String token = "UDGHDHFGFDHLGDKFKGGFVDVF"   ;
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .when()
+                .get(Configuration.getDomain() + "/api/account/getAccountInfo")
+                .then()
+                .statusCode(401);
+    }
+
+    public void getAccountInfoEmptyToken() {
+        String token = ""   ;
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .when()
+                .get(Configuration.getDomain() + "/api/account/getAccountInfo")
+                .then()
+                .statusCode(401);
+    }
+
+
     public void getProfileInfo(String token) {
         given()
                 .spec(Configuration.getRequestSpec(token))
@@ -193,5 +236,25 @@ public class AccountTests {
                 .then()
                 .statusCode(200)
                 .body("code", equalTo(200));
+    }
+
+    public void getProfileInfoWrongToken() {
+        String token = "UDGHDHFGFDHLGDKFKGGFVDVF"   ;
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .when()
+                .get(Configuration.getDomain() + "/api/account/getProfileInfo")
+                .then()
+                .statusCode(401);
+    }
+
+    public void getProfileInfoEmptyToken() {
+        String token = ""   ;
+        given()
+                .spec(Configuration.getRequestSpec(token))
+                .when()
+                .get(Configuration.getDomain() + "/api/account/getProfileInfo")
+                .then()
+                .statusCode(401);
     }
 }

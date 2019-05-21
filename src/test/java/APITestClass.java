@@ -34,12 +34,13 @@ public class APITestClass {
     @Test
     public void accountRegister() {
         RestAssured.defaultParser = Parser.JSON;
-        account.registrationValid(new AccountRegistrationDTO("qww233q", "qewewqewqfewqweq", "qfweqwe@we.reweu"));
+        account.registrationValid(new AccountRegistrationDTO("qww23а3q", "qewewqewqfаewqweq", "qfweqwаe@we.reweu"));
     }
 
     @Test
     public void accountRegisterTest() {
         RestAssured.defaultParser = Parser.JSON;
+        account.registrationWithMissingLogin();
         account.registrationWithMissingPassword();
         account.registrationWithMissingEmail();
         account.registrationWithEmptyCredentials();
@@ -51,20 +52,20 @@ public class APITestClass {
     public void updateEmail() {
         RestAssured.defaultParser = Parser.JSON;
         account.updateEmail(new AccountEmailDTO("acciosky@mail.ru"), token);
-    }
-
-    @Test
-    public void ban() {
-        RestAssured.defaultParser = Parser.JSON;
-        account.ban(new AccountBanDTO(" ", "Altairka", true), token);
-        account.ban(new AccountBanDTO(" ", "Altairka", false), token);
+        //account.updateEmailEmptyValue(token);
+        //account.updateEmailInvalidValue_1(token);
+        //account.updateEmailInvalidValue_2(token);
     }
 
     @Test
     public void getInfo() {
         RestAssured.defaultParser = Parser.JSON;
         account.getAccountInfo(token);
+        account.getAccountInfoWrongToken();
+        account.getAccountInfoEmptyToken();
         account.getProfileInfo(token);
+        account.getProfileInfoWrongToken();
+        account.getProfileInfoEmptyToken();
     }
 
     @Test
