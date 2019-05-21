@@ -1,6 +1,5 @@
 import API.*;
 import models.dto.*;
-import com.sun.xml.xsom.impl.scd.Token;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -35,7 +34,7 @@ public class APITestClass {
     @Test
     public void accountRegister() {
         RestAssured.defaultParser = Parser.JSON;
-        account.registrationValid(new AccountRegistrationDTO("qwwqeewqewq", "qewewqewqewqweq", "qweqwe@we.reweu"));
+        account.registrationValid(new AccountRegistrationDTO("qww233q", "qewewqewqfewqweq", "qfweqwe@we.reweu"));
     }
 
     @Test
@@ -73,11 +72,7 @@ public class APITestClass {
         RestAssured.defaultParser = Parser.JSON;
         options.getTitleOK();
         options.getSocialNetworksOK();
-        // options.getSocialNetworksContainItemsOK();
-        // options.postSocialOK();
-        // options.getSocialOK();
-        // options.patchSocialOK();
-        // options.deleteSocialOK();
+
     }
 
 }
