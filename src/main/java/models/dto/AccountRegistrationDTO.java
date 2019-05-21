@@ -13,7 +13,6 @@ public class AccountRegistrationDTO {
         this.login=login;
         this.password=password;
         this.email=email;
-
     }
 
     public String getLogin() {
@@ -39,5 +38,4 @@ public class AccountRegistrationDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

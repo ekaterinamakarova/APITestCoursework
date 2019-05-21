@@ -73,7 +73,5 @@ public class APITestClass {
         RestAssured.defaultParser = Parser.JSON;
         options.getTitleOK();
         options.getSocialNetworksOK();
-
     }
-
 }

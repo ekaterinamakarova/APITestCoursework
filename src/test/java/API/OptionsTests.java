@@ -27,5 +27,4 @@ public class OptionsTests {
                 .statusCode(200)
                 .body("code", equalTo(200));
     }
-
 }

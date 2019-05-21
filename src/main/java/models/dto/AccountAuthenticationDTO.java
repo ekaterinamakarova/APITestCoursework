@@ -6,7 +6,6 @@ public class AccountAuthenticationDTO {
     private String password;
 
     public AccountAuthenticationDTO() {
-
     }
 
     public AccountAuthenticationDTO(String login, String password) {

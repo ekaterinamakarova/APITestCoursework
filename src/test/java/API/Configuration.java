@@ -17,7 +17,7 @@ public class Configuration {
         return domain;
     }
 
-    /*
+    /**
      * Установка парсера данных по умолчанию. Стандартный парсер - JSON
      * */
     public static void initializeRestAssuredSettings() {
