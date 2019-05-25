@@ -52,9 +52,9 @@ public class APITestClass {
     public void updateEmail() {
         RestAssured.defaultParser = Parser.JSON;
         account.updateEmail(new AccountEmailDTO("acciosky@mail.ru"), token);
-        //account.updateEmailEmptyValue(token);
-        //account.updateEmailInvalidValue_1(token);
-        //account.updateEmailInvalidValue_2(token);
+        account.updateEmailEmptyValue(token);
+        account.updateEmailInvalidValue_1(token);
+        account.updateEmailInvalidValue_2(token);
     }
 
     @Test
